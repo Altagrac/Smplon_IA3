@@ -1,4 +1,4 @@
- #    ******* PACKAGES*********
+#    ******* PACKAGES*********
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -36,7 +36,7 @@ base_url = "https://swapi.dev/api/{}/?search={}" # adresse url api de swapi
 #****************************************************
 
     #    ******* Recuperer les infos de l'api  *********
-
+@st.cache
 def get_data(url):
     resp = req.get(url)
     return resp.json()
