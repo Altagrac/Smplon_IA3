@@ -15,7 +15,7 @@ script = '<p style="font-family:trebuchet; text-align:center; color:Yellow; font
 menu = ["About","MedFiz"," International MedFiz "]
 choice = st.sidebar.selectbox("Menu",menu)
 
-@st.cache
+#@st.cache
 def get_data(url):
     resp = req.get(url)
     return resp.json()
