@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Language Detection</title>
+</head>
+<body>
+    <h1>Language Detection</h1>
+    <form>
+        <input type="text" id="input-text" placeholder="Enter text">
+        <button type="button" onclick="detectLanguage()">Detect Language</button>
+    </form>
+
+    <div id="result-container" style="display: none;">
+        <h2>Result:</h2>
+        <p id="result-label"></p>
+        <p id="result-score"></p>
+    </div>
+
+    <script>
+        function detectLanguage() {
+            var inputText = document.getElementById("input-text").value;
+
+            fetch('/detect-language', {
+                method: 'POST',
+                body: JSON.stringify({text: inputText}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result-label").textContent = "Language: " + data.label;
+                document.getElementById("result-score").textContent = "Confidence: " + data.score;
+
+                document.getElementById("result-container").style.display = "block";
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
