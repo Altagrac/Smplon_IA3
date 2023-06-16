@@ -1,0 +1,15 @@
+/* CSS for styling the image and information */
+.image-container {
+  text-align: center;
+}
+
+.image-container img {
+  cursor: pointer;
+  max-width: 300px;
+  height: auto;
+}
+
+.information {
+  display: none;
+  text-align: center;
+}
